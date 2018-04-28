@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+        <h:head>
+            <title>Ashur</title>
+            <!-- Bootstrap core CSS -->
+            <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>  
+        </h:head>
+    
+    <h:body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <h:link class="navbar-brand" value="Ashur" outcome="Index.xhtml"/>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <h:link class="btn btn-default navbar-btn" value="Home" outcome="Index.xhtml"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link class="btn btn-default navbar-btn" value="Products" outcome="ProductList.xhtml"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link class="btn btn-default navbar-btn" value="Cart" outcome="Cart.xhtml"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:form class="nav-item">
+                                <h:inputText id='searchString' value="#{productBean.searchString}">
+                                    <f:ajax/>
+                                </h:inputText>
+                                <h:commandButton value="Search" action="#{productBean.searchProducts}"/>                
+                            </h:form>
+                        </li>   
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <br/><br/>
+
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="mt-5">Home Page</h1>
+                </div>
+            </div>
+        </div>
+
+        <center class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Who we are yada yada etc etc</p>
+                </div>
+                <div class="col-md-6">
+                    <p>What we do yada yada etc etc</p>
+                </div>
+            </div>
+        </center>
+
+        <center>
+            <h:link value="Shop Now" outcome="ProductList.xhtml"/>
+        </center>
+
+        <footer>
+            <center>
+                Copyright &copy; 2018~M.A.F.
+            </center>
+        </footer>
+
+        <link href="vendor/jquery-3.3.1.min.js"/>
+        <link href="vendor/bootstrap.min.js"/>
+
+    </h:body>
+</html>
