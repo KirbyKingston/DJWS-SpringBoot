@@ -1,17 +1,17 @@
 package beans;
 
-import model.Cart;
-import model.Product;
-import service.CartService;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
+import model.Cart;
+import model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import service.CartService;
 
 /**
  *
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("cartBean")
 @Scope("session")
-public final class CartBean implements Serializable {
+public class CartBean implements Serializable {
 
     @Autowired
     private CartService cartService;

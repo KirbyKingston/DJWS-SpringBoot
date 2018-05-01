@@ -16,26 +16,26 @@ public class LineItem {
 		setAmount(amount);
 	}
 
-	public final Product getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
-	private final void setProduct(Product product) {
+	private void setProduct(Product product) {
 		if(product == null)
 			throw new IllegalArgumentException(MSG + " 25 in LineItem class for null product");
 		this.product = product;
 	}
 
-	public final int getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
-	public final void setAmount(int amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 7;
         hash = 17 * hash + Objects.hashCode(this.product);
         hash = 17 * hash + this.amount;
@@ -43,7 +43,7 @@ public class LineItem {
     }
 
     @Override
-    public final boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -57,14 +57,11 @@ public class LineItem {
         if (this.amount != other.amount) {
             return false;
         }
-        if (!Objects.equals(this.product, other.product)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.product, other.product);
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "LineItem{" + "product=" + product + ", amount=" + amount + '}';
     }
         

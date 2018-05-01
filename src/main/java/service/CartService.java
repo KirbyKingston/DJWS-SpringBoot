@@ -1,9 +1,9 @@
 package service;
 
-import model.Cart;
-import model.Product;
 import java.util.HashMap;
 import java.util.Objects;
+import model.Cart;
+import model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,14 +36,14 @@ public class CartService {
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.cart);
         return hash;
     }
 
     @Override
-    public final boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -54,14 +54,11 @@ public class CartService {
             return false;
         }
         final CartService other = (CartService) obj;
-        if (!Objects.equals(this.cart, other.cart)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.cart, other.cart);
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "CartService{" + "cart=" + cart + '}';
     }
 

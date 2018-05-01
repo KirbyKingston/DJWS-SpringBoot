@@ -51,7 +51,7 @@ public class PersistenceJDBCConfig {
         BasicDataSource datasource = new BasicDataSource();
         datasource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
         datasource.setUrl("jdbc:derby://localhost:1527/StoreData");
-        datasource.setUsername("MAF");
+        datasource.setUsername("app");
         datasource.setPassword("APP");
         return datasource;
     }

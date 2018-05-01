@@ -1,15 +1,16 @@
 package beans;
-import model.Product;
-import service.ProductService;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import service.ProductService;
 
 /**
  *
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("productBean")
 @Scope("session")
-public final class ProductBean implements Serializable {
+public class ProductBean implements Serializable {
 
     @Autowired
     private ProductService productService;
@@ -29,36 +30,36 @@ public final class ProductBean implements Serializable {
     public ProductBean() {
     }
 
-    public final Product getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public final void setProduct(Product p) {
+    public void setProduct(Product p) {
         product = p;
         System.out.println("product = " + product);
     }
 
-    public final List<Product> getProducts() {
-        return products;
+    public List<Product> getProducts() {
+        return Collections.unmodifiableList(products);
     }
 
-    public final void setProducts(List<Product> p) {
+    public void setProducts(List<Product> p) {
         if (p != null) {
             products = p;
         }
         System.out.println("ProductBean products at line 51 = " + products);
     }
 
-    public final String getSearchString() {
+    public String getSearchString() {
         return searchString;
     }
 
-    public final void setSearchString(String search) {
+    public void setSearchString(String search) {
         searchString = search;
         System.out.println("ProductBean searchString at line 60 = " + searchString);
     }
 
-    public final String searchProducts() throws Exception {
+    public String searchProducts() throws Exception {
         List<Product> productSearchList = productService.findProducts(searchString);
         System.out.println(productSearchList);
         if (productSearchList == null) {
