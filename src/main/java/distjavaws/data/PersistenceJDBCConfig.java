@@ -1,4 +1,4 @@
-package data;
+package distjavaws.data;
 
 import java.util.Properties;
 import javax.naming.NamingException;
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "DJWS-SpringBoot")
+@EnableJpaRepositories(basePackages = "distjavaws")
 public class PersistenceJDBCConfig {
 
     @Bean
@@ -31,7 +31,7 @@ public class PersistenceJDBCConfig {
                 = new LocalContainerEntityManagerFactoryBean();
 
         emf.setDataSource(dataSource());
-        emf.setPackagesToScan("DJWS-SpringBoot.src.main.java");
+        emf.setPackagesToScan("distjavaws");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
@@ -50,8 +50,8 @@ public class PersistenceJDBCConfig {
     public DataSource dataSource() throws NamingException {
         BasicDataSource datasource = new BasicDataSource();
         datasource.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
-        datasource.setUrl("jdbc:derby://localhost:1527/StoreData");
-        datasource.setUsername("app");
+        datasource.setUrl("jdbc:derby://localhost:1527/storeData");
+        datasource.setUsername("APP");
         datasource.setPassword("APP");
         return datasource;
     }

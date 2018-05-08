@@ -1,6 +1,6 @@
-package distjavaws.djws.springboot;
+package distjavaws;
 
-import org.springframework.boot.SpringApplication;
+import static org.springframework.boot.SpringApplication.run;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class DJStore {
+
     public static void main(String[] args) {
-        SpringApplication.run(DJStore.class, args);
+        run(DJStore.class, args);
     }
 }

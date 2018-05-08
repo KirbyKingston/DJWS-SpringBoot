@@ -1,40 +1,41 @@
-package model;
+package distjavaws.model;
 
-import javax.persistence.Entity;
-import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Mitch
  */
-@Entity(name = "Product")
-public class Product implements Serializable{
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Product{
 
     public final static String REQUIRED_MSG = "This is a required field.";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+
     @Column(name = "description")
     private String description;
     @Column(name = "unitCost")
     private double unitCost;
 
-    public Product(String id, String description, double unitCost) {
-        setId(id);
-        setDescription(description);
-        setUnitCost(unitCost);
+    public Product() {
     }
-    
-    public Product(String id, Double unitCost){
-		this(id,"",unitCost);
-	}
-    
-    public Product(){ 
+
+    public Product(String description, double unitCost) {
+        this.description = description;
+        this.unitCost = unitCost;
     }
 
     public String getId() {
@@ -68,36 +69,6 @@ public class Product implements Serializable{
             throw new IllegalArgumentException(REQUIRED_MSG);
         }
         this.unitCost = unitCost;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Product other = (Product) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" + "id=" + id + ", description=" + description + ", unitCost=" + unitCost + '}';
     }
 
 }

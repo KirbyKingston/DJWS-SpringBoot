@@ -1,4 +1,4 @@
-package model;
+package distjavaws.model;
 
 import java.util.Objects;
 
@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author Mitch
  */
-public class LineItem {
+public final class LineItem {
         private final static String MSG = "IAE at line";
 	private Product product;
 	private int amount;

@@ -1,6 +1,6 @@
-package data.dao;
+package distjavaws.data.dao;
 
-import model.Cart;
+import distjavaws.model.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
